@@ -16,3 +16,17 @@ for (const link of links) {
     nav.classList.remove('show')
   })
 }
+
+// header scroll shadow
+const header = document.querySelector('#header')
+const navHeight = header.offsetHeight
+
+window.addEventListener("scroll", function(){
+  if (window.scrollY >= navHeight){
+    // scroll is higher than header
+    header.classList.add("scroll")
+  }else{
+    // scroll is smaller than header
+    header.classList.remove("scroll")
+  }
+})
