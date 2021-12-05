@@ -505,3 +505,16 @@ footer .social a:hover {
   transition: 0.2s;
   transform: translateY(0);
 }
+
+/*---- MEDIA QUERIES ----*/
+
+/*-- extra large devaces: 1200 > --*/
+
+/*-- large devaces: 1023 > --*/
+
+/*-- large devaces: 992 > --*/
+@media(min-width: 992px) {
+
+}
+
+/*-- medium devaces: 767 > --*/
