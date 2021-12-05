@@ -208,6 +208,10 @@ nav.show .icon-close {
   color: var(--base-color);
 }
 
+.logo-alt span {
+  color: var(--text-color-light);
+}
+
 .container {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
@@ -424,29 +428,80 @@ main {
 
 /*---- contact ----*/
 
-#contact .grid{
+#contact .grid {
   gap: 4rem;
 }
 
-#contact .text p{
+#contact .text p {
   margin-bottom: 2rem;
 }
 
 #contact .button i,
-#contact ul li i{
+#contact ul li i {
   font-size: 1.5rem;
-  margin-right: .625rem;
+  margin-right: 0.625rem;
 }
 
-#contact ul.grid{
+#contact ul.grid {
   gap: 2rem;
 }
 
-#contact ul li{
+#contact ul li {
   display: flex;
   align-items: center;
 }
 
-#contact ul li i{
+#contact ul li i {
   color: var(--base-color);
+}
+
+/*---- footer ----*/
+footer {
+  background: var(--base-color);
+}
+
+footer .logo {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+footer .brand p {
+  color: var(--text-color-light);
+  margin-bottom: 0.75rem;
+}
+
+footer .social a {
+  color: var(--text-color-light);
+  font-size: 1.5rem;
+  margin-right: 2rem;
+  display: inline-block;
+  transition: 0.2s;
+}
+
+footer .social a:hover {
+  transform: translateY(-5px);
+}
+
+/*---- back to top ----*/
+.back-to-top {
+  background: var(--base-color);
+  color: var(--text-color-light);
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  padding: 0.5rem;
+  line-height: 0;
+  font-size: 1.5rem;
+  clip-path: circle();
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.2s;
+  transform: translateY(100%);
+}
+
+.back-to-top.show {
+  visibility: visible;
+  opacity: 1;
+  transition: 0.2s;
+  transform: translateY(0);
 }
