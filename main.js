@@ -21,13 +21,13 @@ for (const link of links) {
 const header = document.querySelector('#header')
 const navHeight = header.offsetHeight
 
-window.addEventListener("scroll", function(){
-  if (window.scrollY >= navHeight){
+window.addEventListener('scroll', function () {
+  if (window.scrollY >= navHeight) {
     // scroll is higher than header
-    header.classList.add("scroll")
-  }else{
+    header.classList.add('scroll')
+  } else {
     // scroll is smaller than header
-    header.classList.remove("scroll")
+    header.classList.remove('scroll')
   }
 })
 
@@ -39,4 +39,21 @@ const swiper = new Swiper('.swiper', {
   },
   mousewheel: true,
   keyboard: true
-});
+})
+
+// scroll reveal
+const scrollReveal = ScrollReveal({
+  origin: 'top',
+  distance: '30px',
+  duration: 700,
+  reset: true
+})
+
+scrollReveal.reveal(`
+  #home .image, #home .text,
+  #about .image, #about .text,
+  #services header, #services .cards .card,
+  #testimonials header,#testimonials .testimonials,
+  #contact .text, #contact .info
+  `, 
+  { interval: 50 })
