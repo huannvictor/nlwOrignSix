@@ -34,6 +34,12 @@ img {
   --text-color: hsl(0 0% 46%);
   --text-color-light: hsl(0 0% 98%);
   --body-color: hsl(0 0% 98%);
+
+  /* fonts */
+  --title-font-size: 1.875rem;
+  --subtitle-font-size: 1rem;
+  --title-font: 'Poppins', sans-serif;
+  --body-font: 'DM Sans', sans-serif;
 }
 
 /*---- BASE ----*/
@@ -43,14 +49,14 @@ html {
 }
 
 body {
-  font: 400 1rem 'DM Sans', sans-serif;
+  font: 400 1rem var(--body-font);
   color: var(--text-color);
   background: var(--body-color);
   -webkit-font-smoothing: antialised;
 }
 
 .title {
-  font: 700 1.875rem 'Poppins', sans-serif;
+  font: 700 var(--title-font-size) var(--title-font);
   color: var(--title-color);
   -webkit-font-smoothing: auto;
 }
@@ -63,7 +69,7 @@ body {
   align-items: center;
   padding: 0 2rem;
   border-radius: 0.25rem;
-  font: 500 1rem 'DM Sans', sans-serif;
+  font: 500 1rem var(--body-font);
   transition: background 0.3s;
 }
 
@@ -90,6 +96,35 @@ body {
 }
 
 /*---- LAYOUT ----*/
+.container {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.section {
+  padding: calc(5rem + var(--header-height)) 0;
+}
+
+.section .title {
+  margin-bottom: 1rem;
+}
+
+.section .subtitle {
+  font-size: var(--subtitle-font-size);
+}
+
+.section header {
+  margin-bottom: 4rem;
+}
+
+.section header p strong {
+  color: var(--base-color);
+}
 
 #header {
   border-bottom: 1px solid #e4e4e4;
@@ -108,8 +143,25 @@ body {
   background: var(--base-color-second);
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
   transition: 0.3s;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
 }
 
+/*---- logo ----*/
+.logo {
+  font: 700 1.31rem var(--title-font);
+  color: var(--title-color);
+}
+
+.logo span {
+  color: var(--base-color);
+}
+
+.logo-alt span {
+  color: var(--text-color-light);
+}
+
+/*---- navigarion ----*/
 nav {
   width: 100%;
   display: flex;
@@ -177,7 +229,7 @@ nav.show ul.grid {
   gap: 4rem;
 }
 
-.toggle {
+nav .toggle {
   color: var(--base-color);
   font-size: 1.5rem;
   cursor: pointer;
@@ -197,49 +249,6 @@ nav.show .icon-close {
   opacity: 1;
   top: 1.5rem;
   transition: 0.3s;
-}
-
-.logo {
-  font: 700 1.31rem 'Poppins', sans-serif;
-  color: var(--title-color);
-}
-
-.logo span {
-  color: var(--base-color);
-}
-
-.logo-alt span {
-  color: var(--text-color-light);
-}
-
-.container {
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
-}
-
-.grid {
-  display: grid;
-  gap: 2rem;
-}
-
-.section {
-  padding: 5rem 0;
-}
-
-.section .title {
-  margin-bottom: 1rem;
-}
-
-.section header {
-  margin-bottom: 4rem;
-}
-
-.section header p strong {
-  color: var(--base-color);
-}
-
-main {
-  margin-top: calc(var(--header-height) + 2rem);
 }
 
 /*---- HOME ----*/
@@ -283,8 +292,8 @@ main {
   text-align: center;
 }
 
-#home .text h1 {
-  margin: 1rem;
+#home .text h2 {
+  margin-bottom: 1rem;
 }
 
 #home .text p {
@@ -307,11 +316,11 @@ main {
 
 #about .image::before {
   content: '';
-  background: var(--base-color-second);
-  width: 100%;
   height: 100%;
+  width: 100%;
+  background: var(--base-color-second);
   position: absolute;
-  top: -10%;
+  top: -8.3%;
   left: -33%;
   z-index: 0;
 }
@@ -328,14 +337,6 @@ main {
 #about .text {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
-}
-
-#about .text h1 {
-  margin: 1rem;
-}
-
-#about .text p {
-  margin-bottom: 2rem;
 }
 
 /*---- services ----*/
@@ -460,6 +461,10 @@ footer {
   background: var(--base-color);
 }
 
+footer.section {
+  padding: 4rem 0;
+}
+
 footer .logo {
   display: inline-block;
   margin-bottom: 1.5rem;
@@ -470,11 +475,14 @@ footer .brand p {
   margin-bottom: 0.75rem;
 }
 
+footer .social {
+  grid-auto-flow: column;
+  width: fit-content;
+}
+
 footer .social a {
   color: var(--text-color-light);
   font-size: 1.5rem;
-  margin-right: 2rem;
-  display: inline-block;
   transition: 0.2s;
 }
 
@@ -508,13 +516,124 @@ footer .social a:hover {
 
 /*---- MEDIA QUERIES ----*/
 
-/*-- extra large devaces: 1200 > --*/
+/*-- extra large devaces: >= 1200 --*/
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1120px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-/*-- large devaces: 1023 > --*/
+  .section {
+    padding: 10rem 0;
+  }
 
-/*-- large devaces: 992 > --*/
-@media(min-width: 992px) {
+  .section header,
+  #testimonials header {
+    max-width: 32rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
+  .button {
+    height: 3.125rem;
+  }
+
+  nav .menu {
+    opacity: 1;
+    visibility: visible;
+    top: 0;
+    display: grid;
+  }
+
+  nav .menu ul {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2rem;
+  }
+
+  nav .menu ul li a.title {
+    font: 400 1rem var(--body-font);
+  }
+
+  nav .toggle {
+    display: none;
+  }
+
+  main {
+    margin-top: var(--header-height);
+  }
+
+  /* home */
+  #home .container {
+    grid-auto-flow: column;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+
+  #home .image {
+    order: 1;
+  }
+
+  #home .text {
+    order: 0;
+    max-width: 24rem;
+    text-align: left;
+  }
+
+  /* about */
+  #about .container {
+    grid-auto-flow: column;
+    margin: 0 auto;
+  }
+
+  /* servives */
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .card {
+    padding-left: 3rem;
+    padding-left: 3rem;
+  }
+
+  /* testimonials */
+  #testimonials .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* contact */
+  #contact .container {
+    grid-auto-flow: column;
+    align-items: center;
+  }
+
+  #contact .text,
+  #contac .info {
+    max-width: 24rem;
+  }
+
+  /* footer */
+  footer .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer .logo{
+    font-size: 2.3rem;
+  }
 }
 
-/*-- medium devaces: 767 > --*/
+/*-- large devaces: >= 1023 --*/
+
+/*-- large devaces: >= 992 --*/
+@media (min-width: 992px) {
+  :root {
+    --title-font-size: 2.25rem;
+    --subtitle-font-size: 1.125rem;
+  }
+}
+
+/*-- medium devaces: >= 767 --*/
