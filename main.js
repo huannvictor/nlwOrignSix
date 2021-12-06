@@ -18,9 +18,10 @@ for (const link of links) {
 }
 
 // header scroll shadow
+const header = document.querySelector('#header')
+const navHeight = header.offsetHeight
+
 function changeHeaderScrolled() {
-  const header = document.querySelector('#header')
-  const navHeight = header.offsetHeight
   if (window.scrollY >= navHeight) {
     // scroll is higher than header
     header.classList.add('scroll')
@@ -67,11 +68,11 @@ scrollReveal.reveal(
 )
 
 // button back to top
-function backToTop() {
-  const backToTopButton = document.querySelector('#button')
-  const page = document.querySelector('body')
-  const pageHeight = (page.offsetHeight / 100) * 5
+const backToTopButton = document.querySelector('#button')
+const page = document.querySelector('body')
+const pageHeight = (page.offsetHeight / 100) * 5
 
+function backToTop() {
   if (window.scrollY >= pageHeight) {
     backToTopButton.classList.add('show')
   } else {
@@ -79,9 +80,35 @@ function backToTop() {
   }
 }
 
+// active menu by the page scrolling
+const sections = document.querySelectorAll('main section[id]')
+
+function activateMenuCurrentSection(){
+   const checkpoint = window.pageYOffset + (window.innerHeight/8)*4
+   for (const section of sections){
+     const sectionTop = section.offsetTop
+     const sectionHeight = section.offsetHeight
+     const sectionId = section.getAttribute('id')
+
+     const checkpointStart = checkpoint >= sectionTop
+     const checkpointEnd = checkpoint <= sectionTop + sectionHeight
+
+     if (checkpointStart && checkpointEnd){
+       document
+        .querySelector('nav ul li a[href*=' + sectionId + ']')
+        .classList.add('active')
+     }else{
+      document
+      .querySelector('nav ul li a[href*=' + sectionId + ']')
+      .classList.remove('active')
+     }
+   }
+}
+
 // execute functions
 
 window.addEventListener('scroll', function () {
   changeHeaderScrolled()
   backToTop()
+  activateMenuCurrentSection()
 })
